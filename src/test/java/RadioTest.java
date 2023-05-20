@@ -40,6 +40,42 @@ public class RadioTest {
     }
 
     @Test
+    public void shouldSetVolume() {
+        Radio volume = new Radio();
+
+        volume.setCurrentVolume(55);
+
+        int expected = 55;
+        int actual = volume.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetVolumeAboveMax() {
+        Radio volume = new Radio();
+
+        volume.setCurrentVolume(101);
+
+        int expected = 0;
+        int actual = volume.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldNotSetVolumeBelowMin() {
+        Radio volume = new Radio();
+
+        volume.setCurrentVolume(-1);
+
+        int expected = 0;
+        int actual = volume.getCurrentVolume();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldIncreaseRadioStation() {
         Radio radio = new Radio();
         radio.setCurrentRadioStation(3);
@@ -87,42 +123,6 @@ public class RadioTest {
 
         int expected = 9;
         int actual = radio.getCurrentRadioStation();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSetVolume() {
-        Radio volume = new Radio();
-
-        volume.setCurrentVolume(55);
-
-        int expected = 55;
-        int actual = volume.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldNotSetVolumeAboveMax() {
-        Radio volume = new Radio();
-
-        volume.setCurrentVolume(101);
-
-        int expected = 0;
-        int actual = volume.getCurrentVolume();
-
-        Assertions.assertEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldNotSetVolumeBelowMin() {
-        Radio volume = new Radio();
-
-        volume.setCurrentVolume(-1);
-
-        int expected = 0;
-        int actual = volume.getCurrentVolume();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -178,4 +178,4 @@ public class RadioTest {
 
         Assertions.assertEquals(expected, actual);
     }
- }
+}
